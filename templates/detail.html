@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <div class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white bg-danger rounded shadow-sm">
+        <div class="lh-1">
+          <h1 class="h6 mb-0 text-white lh-1">{{ topic.title }}</h1>
+          <small>{{ topic.added_date }}</small>
+        </div>
+      </div>
+    
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Recent Learning Logs</h6>
+        
+        {% for entry in entries %}
+
+        <div class="d-flex text-muted pt-3">
+          <p class="pb-3 mb-0 small lh-sm border-bottom">
+            <strong class="d-block text-gray-dark"> {{ entry.created }}</strong>
+             {{ entry.about }}
+          </p>
+        </div>
+
+        {% empty %}
+        <div class="d-flex text-muted pt-3">
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+              <strong class="d-block text-gray-dark"> No entry is added yet.</strong>
+             
+            </p>
+          </div>
+        
+        {% endfor %}
+       
+      </div>
+ </div>
+
+{% endblock %}
